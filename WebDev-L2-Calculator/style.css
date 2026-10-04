@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
+
+:root {
+  --pink-50: #fff5f9;
+  --pink-100: #ffe3ef;
+  --pink-200: #ffc2da;
+  --pink-300: #ff9ec7;
+  --pink-400: #ff7eb3;
+  --pink-500: #f0549a;
+  --pink-600: #d63384;
+  --text-dark: #7a2150;
+  --text-soft: #c27a9d;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Quicksand", "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #fff5f9 0%, #ffeaf3 50%, #ffdcec 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Soft blurred blobs in the background */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+}
+body::before {
+  width: 320px;
+  height: 320px;
+  background: #ffcde3;
+  top: -80px;
+  left: -80px;
+  opacity: 0.6;
+}
+body::after {
+  width: 360px;
+  height: 360px;
+  background: #ffffff;
+  bottom: -100px;
+  right: -80px;
+  opacity: 0.9;
+}
+
+/* Soft blurred blobs in the background */
+
+
+/* Glass calculator card */
+.calculator {
+  position: relative;
+  z-index: 1;
+  width: 330px;
+  padding: 22px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 20px 45px rgba(214, 51, 132, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Display */
+.display {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 22px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  text-align: right;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  word-break: break-all;
+  box-shadow: inset 0 2px 8px rgba(214, 51, 132, 0.1);
+}
+
+#previous {
+  color: var(--text-soft);
+  font-size: 1rem;
+  font-weight: 500;
+  min-height: 24px;
+}
+
+#current {
+  color: var(--text-dark);
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+button {
+  padding: 18px 0;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 6px 12px rgba(214, 51, 132, 0.12),
+    inset 0 1px 0 #ffffff;
+  transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(214, 51, 132, 0.2);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.96);
+  box-shadow: 0 2px 6px rgba(214, 51, 132, 0.2);
+}
+
+/* Operators */
+.operator {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--pink-300), var(--pink-500));
+}
+
+/* C and delete */
+.function {
+  color: var(--pink-600);
+  background: var(--pink-100);
+}
+
+/* Equals */
+.equals {
+  color: #ffffff;
+  background: linear-gradient(160deg, var(--pink-400), var(--pink-600));
+  grid-row: span 2;
+  box-shadow: 0 10px 22px rgba(214, 51, 132, 0.4);
+}
+
+.zero { grid-column: span 2; }
+
+/* Small screens */
+@media (max-width: 400px) {
+  .calculator { width: 92%; padding: 16px; }
+  #current { font-size: 2rem; }
+}
